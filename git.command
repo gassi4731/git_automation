@@ -1,3 +1,7 @@
+ESC=$(printf '\033')
+echo "${ESC}[32mGREEN${ESC}[m"
+
+
 # Gitが存在するかを確認
 git --version
 if [ $? != 0 ]; then
@@ -10,9 +14,11 @@ if [ $? != 0 ]; then
   echo Gitのインストールを開始
   brew install git
 fi
-echo Gitがインストールされていることを確認
+echo [STEP 1] Gitがインストールされていることを確認
 
 # GithubのConfigに登録できているかどうか
+
+echo [STEP 2] Gitの環境設定が完了していることを確認
 
 # 今いるディレクトリに移動
 cd `dirname $0`
