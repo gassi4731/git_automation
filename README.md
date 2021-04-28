@@ -1,4 +1,4 @@
-# git_automation
+# Githubアップロードお手軽ツール
 
 Github への Push を簡単に終わらせるもの
 
