@@ -6,30 +6,35 @@ if [ $? != 0 ]; then
   if [ $? = 0 ]; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
+  echo Homebrewがインストール済であることを確認
+  echo Gitのインストールを開始
   brew install git
 fi
+echo Gitがインストールされていることを確認
 
 # GithubのConfigに登録できているかどうか
 
-# 今いるディレクトリを確認&移動
-read -p "今いるディレクトリを教えてください。(Enterで確定): " dirUrl
-cd $dirUrl
+# 今いるディレクトリに移動
+cd `dirname $0`
+pwd
 
 # gitファイルが存在するか
 cd .git
 if [ $? != 0 ]; then
   git init
-  echo 8
+  echo Gitの初期化を実行
 else
   cd ../
+  echo Gitが初期化済であることを確認
 fi
 
 git push origin master
 if [ $? != 0 ]; then
   read -p "GithubのURLを入力してください。(Enterで確定): " gitUrl
   git remote add origin $gitUrl
+  echo Githubのリモートリポジトリを設定
 else
-  echo Good
+  echo Githubのリモートリポジトリが機能していることを確認
 fi
 
 # gitにPushする
