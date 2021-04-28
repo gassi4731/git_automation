@@ -1,6 +1,5 @@
+# 出力用の環境設定
 ESC=$(printf '\033')
-echo "${ESC}[32mGREEN${ESC}[m"
-
 
 # Gitが存在するかを確認
 git --version
@@ -14,11 +13,7 @@ if [ $? != 0 ]; then
   echo Gitのインストールを開始
   brew install git
 fi
-echo [STEP 1] Gitがインストールされていることを確認
-
-# GithubのConfigに登録できているかどうか
-
-echo [STEP 2] Gitの環境設定が完了していることを確認
+printf "${ESC}[32m%s${ESC}[m\n" '[OK] Gitの動作'
 
 # 今いるディレクトリに移動
 cd `dirname $0`
@@ -33,6 +28,7 @@ else
   cd ../
   echo Gitが初期化済であることを確認
 fi
+printf "${ESC}[32m%s${ESC}[m\n" '[OK] Gitリポジトリの存在'
 
 git push origin master
 if [ $? != 0 ]; then
@@ -42,9 +38,11 @@ if [ $? != 0 ]; then
 else
   echo Githubのリモートリポジトリが機能していることを確認
 fi
+printf "${ESC}[32m%s${ESC}[m\n" '[OK] リモートリポジトリの設定'
 
 # gitにPushする
 git add .
 read -p "今回のアップロードのコメントを書いてください(Enterで確定): " commitStr
 git commit -m $commitStr
 git push origin master
+printf "${ESC}[32m%s${ESC}[m\n" '[OK] Githubへのアップロード'
