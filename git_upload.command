@@ -42,7 +42,7 @@ printf "${ESC}[32m%s${ESC}[m\n" '[OK] リモートリポジトリの設定'
 
 # gitにPushする
 git add .
-read -p "今回のアップロードのコメントを書いてください(Enterで確定): " -a commitStr
+read -p "今回のアップロードのコメントを書いてください(Enterで確定): " commitStr
 git commit -m $commitStr
 git push origin master
 printf "${ESC}[32m%s${ESC}[m\n" '[OK] Githubへのアップロード'
