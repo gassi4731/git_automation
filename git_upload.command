@@ -34,6 +34,7 @@ git push origin master
 if [ $? != 0 ]; then
   read -p "GithubのURLを入力してください。(Enterで確定): " gitUrl
   git remote add origin $gitUrl
+  git remote set-url origin $gitUrl
   echo Githubのリモートリポジトリを設定
 else
   echo Githubのリモートリポジトリが機能していることを確認
